@@ -9,12 +9,12 @@ function displayDate(){
 }
 
 function timeline() {
-    var hour = moment().format('hh');
+    var hour = parseInt(moment().format('hh'));
     var timeOfDay = moment().format('a');
     console.log(hour);
     console.log(timeOfDay);
-    if (timeOfDay === 'pm' && hour !== '12') {
-        hour = parseInt(hour) + 12;
+    if (timeOfDay === 'pm' && hour !== 12) {
+        hour = hour + 12;
         console.log(hour);
     };
 }
