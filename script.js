@@ -1,4 +1,9 @@
-console.log("hello");
+function init() {
+    displayDate();
+};
 
-var p = moment().format('MMMM Do YYYY');
-console.log(p);
+function displayDate(){
+    $('#currentDay').text(moment().format('MMMM Do, YYYY'));
+}
+
+init();
