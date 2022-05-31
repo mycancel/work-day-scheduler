@@ -36,6 +36,21 @@ function displayEvents() {
     }
 };
 
+function alertTimer() {
+    $('#alert').text("Successfully saved to local storage.");
+    var secondsLeft = 5;
+    
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            $('#alert').text("");
+        }
+
+    }, 1000);
+}
+
 $('.saveBtn').on('click', function (event) {
     // Index of the event's row
     var textIndex = $(this).parent().index();
@@ -54,7 +69,7 @@ $('.saveBtn').on('click', function (event) {
     // Returns new array to localStorage
     localStorage.setItem('events', JSON.stringify(events));
 
-    $('#alert').text("Successfully saved to local storage.")
+    alertTimer();
 });
 
 init();
