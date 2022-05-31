@@ -14,9 +14,9 @@ function displayDate() {
 // Changes the formatting of textareas according to hour.
 function timeline() {
     var hour = parseInt(moment().format('H'));
-
     var container = $('.container');
     var position = hour - 9;
+    
     // The textbox of the current hour will have the present class.
     container.children().eq(position).find('textarea').addClass('present');
     for (var i = 0; i < position; i++) {
@@ -29,6 +29,7 @@ function timeline() {
     };
 };
 
+// Displays saved events in the textareas of its corresponding index
 function displayEvents() {
     for (i = 0; i < events.length; i++) {
         $('.container').children().eq(events[i].index).find('textarea').val(events[i].text);
@@ -36,20 +37,22 @@ function displayEvents() {
 };
 
 $('.saveBtn').on('click', function (event) {
+    // Index of the event's row
     var textIndex = $(this).parent().index();
+    // Text written in the text area 
     var textValue = $(this).parent().find('textarea').val();
 
     var data = {
         index: textIndex,
         text: textValue,
     };
-    console.log(data);
 
+    // Retrieves localStorage item
     var events = JSON.parse(localStorage.getItem('events')) || [];
-
+    // Adds new data
     events.push(data);
-
-    localStorage.setItem("events", JSON.stringify(events));
+    // Returns new array to localStorage
+    localStorage.setItem('events', JSON.stringify(events));
 });
 
 init();
