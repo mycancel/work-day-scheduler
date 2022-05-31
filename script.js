@@ -16,7 +16,7 @@ function timeline() {
     var hour = parseInt(moment().format('H'));
     var container = $('.container');
     var position = hour - 9;
-    
+
     // The textbox of the current hour will have the present class.
     container.children().eq(position).find('textarea').addClass('present');
     for (var i = 0; i < position; i++) {
@@ -53,6 +53,8 @@ $('.saveBtn').on('click', function (event) {
     events.push(data);
     // Returns new array to localStorage
     localStorage.setItem('events', JSON.stringify(events));
+
+    $('#alert').text("Successfully saved to local storage.")
 });
 
 init();
