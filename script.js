@@ -1,4 +1,6 @@
 function init() {
+    var events = JSON.parse(localStorage.getItem('events')) || [];
+    // displayEvents();
     displayDate();
     timeline();
 };
@@ -36,5 +38,23 @@ function timeline() {
         container.find('textarea').addClass('past');
     }
 }
+
+
+$('.saveBtn').on('click', function(event) {
+    var textIndex = $(this).parent().index();
+    var textValue = $(this).parent().find('textarea').val();
+
+    var data = {
+        index: textIndex,
+        text: textValue,
+    };
+    console.log(data);
+
+    var events = JSON.parse(localStorage.getItem('events')) || [];
+
+    events.push(data);
+
+    localStorage.setItem("events", JSON.stringify(events));
+});
 
 init();
