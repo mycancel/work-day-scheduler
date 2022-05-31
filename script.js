@@ -10,12 +10,7 @@ function displayDate() {
 
 // Changes the formatting of textareas according to hour.
 function timeline() {
-    var hour = parseInt(moment().format('hh'));
-    var timeOfDay = moment().format('a');
-    // Changes hour to military time
-    if (timeOfDay === 'pm' && hour !== 12) {
-        hour = hour + 12;
-    };
+    var hour = parseInt(moment().format('H'));
 
     var container = $('.container');
     var position = hour - 9;
