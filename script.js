@@ -36,10 +36,11 @@ function displayEvents() {
     }
 };
 
+// Alerts after the event is saved to local storage and disappears after 5 seconds
 function alertTimer() {
     $('#alert').text("Successfully saved to local storage.");
     var secondsLeft = 5;
-    
+
     var timerInterval = setInterval(function () {
         secondsLeft--;
 
