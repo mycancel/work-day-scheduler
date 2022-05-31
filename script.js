@@ -1,6 +1,7 @@
+var events = JSON.parse(localStorage.getItem('events')) || [];
+
 function init() {
-    var events = JSON.parse(localStorage.getItem('events')) || [];
-    // displayEvents();
+    displayEvents();
     displayDate();
     timeline();
 };
@@ -8,7 +9,7 @@ function init() {
 // Displays the date at the top of the calendar page.
 function displayDate() {
     $('#currentDay').text(moment().format('dddd, MMMM Do, YYYY'));
-}
+};
 
 // Changes the formatting of textareas according to hour.
 function timeline() {
@@ -26,8 +27,13 @@ function timeline() {
         // The textbox of future hours will have the future class.
         container.children().eq(i).find('textarea').addClass('future');
     };
-}
+};
 
+function displayEvents() {
+    for (i = 0; i < events.length; i++) {
+        $('.container').children().eq(events[i].index).find('textarea').val(events[i].text);
+    }
+};
 
 $('.saveBtn').on('click', function (event) {
     var textIndex = $(this).parent().index();
